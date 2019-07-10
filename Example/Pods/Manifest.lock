@@ -1,0 +1,25 @@
+PODS:
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - Z3DBService (0.1.0):
+    - FMDB (~> 2.7.5)
+
+DEPENDENCIES:
+  - Z3DBService (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - FMDB
+
+EXTERNAL SOURCES:
+  Z3DBService:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  Z3DBService: fe5d1583b9f14c9cd4dcdc2c73f03034302d15a0
+
+PODFILE CHECKSUM: 0f75413759126f4fceca8e8060dfc250fca4419e
+
+COCOAPODS: 1.6.1
