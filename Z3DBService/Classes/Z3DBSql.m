@@ -31,3 +31,4 @@ STRFTIME('yyyy-MM-dd', gpstime) == STRFTIME('yyyy-MM-dd', ?) \
 AND userid == ? \
 AND status == ? \
 LIMIT ?,?";
+
