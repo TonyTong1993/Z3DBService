@@ -8,7 +8,6 @@
 #import "Z3LocationBeanFactory.h"
 #import <CoreLocation/CLLocation.h>
 #import "Z3LocationBean.h"
-#import "Z3MobileConfig.h"
 #import "CoorTranUtil.h"
 @implementation Z3LocationBeanFactory
 + (instancetype)factory {
@@ -39,6 +38,7 @@
 }
 
 - (Z3LocationBean *)buildLocationBeansWithCLLocation:(CLLocation *)location
+                                           coorTrans:(CoorTranUtil *)coorTrans
                                               userid:(NSInteger)userid {
     NSParameterAssert(location);
     Z3LocationBean *bean = [[Z3LocationBean alloc] init];
@@ -47,7 +47,6 @@
     bean.longitude = coordinate2d.longitude;
     bean.acu = location.horizontalAccuracy;
     bean.speed = location.speed;
-    CoorTranUtil *coorTrans = [Z3MobileConfig shareConfig].coorTrans;
     CGPoint point = [coorTrans CoorTrans:coordinate2d.latitude lon:coordinate2d.longitude height:0];
     bean.x = point.x;
     bean.y = point.y;
@@ -60,10 +59,12 @@
     return bean;
 }
 
-- (NSArray<Z3LocationBean *> *)buildLocationBeansWithCLLocations:(NSArray<CLLocation *> *)locations  userid:(NSInteger)userid {
+- (NSArray<Z3LocationBean *> *)buildLocationBeansWithCLLocations:(NSArray<CLLocation *> *)locations
+                                                       coorTrans:(CoorTranUtil *)coorTrans
+                                                          userid:(NSInteger)userid {
     NSMutableArray *beans = [NSMutableArray arrayWithCapacity:locations.count];
     for (CLLocation *location in locations) {
-            Z3LocationBean *bean = [self buildLocationBeansWithCLLocation:location userid:userid];
+            Z3LocationBean *bean = [self buildLocationBeansWithCLLocation:location coorTrans:coorTrans userid:userid];
             [beans addObject:bean];
     }
     return beans;

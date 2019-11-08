@@ -4,5 +4,5 @@ platform :ios, '8.0'
 
 target 'Z3DBService_Example' do
   pod 'Z3DBService', :path => '../'
-
+  pod 'CoordinateTransform',:path => '../../CoordinateTransform'
 end
